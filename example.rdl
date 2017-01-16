@@ -1,0 +1,34 @@
+name example
+
+type Book Struct;
+// {
+//   String id
+//   String title
+//   Array<String> authors (optional)
+//   Int32 year (optional)
+//}
+
+resource Book POST "/book" (name=create_book) {
+   Book book
+}
+
+resource Book GET "/book/{id}" (name=read_book) {
+   String id
+}
+
+resource Book PUT "/book/{id}" (name=update_book) {
+   Book book
+   String id
+}
+
+resource Book DELETE "/book/{id}" {
+   String id
+   expected NO_CONTENT
+}
+
+type BookList Struct {
+   Array<Book> books
+}
+
+resource BookList GET "/book" (name=list_books){
+}
